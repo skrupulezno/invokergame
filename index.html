@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>InvokerGame by skrupulezno</title>
+	<link rel="stylesheet" href="src/style.css">
+  <link rel="icon" href="src/qwe.gif" type="image/gif" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+	<div class="grid-container">
+		<div class="left-container">Stats</div>
+		<div class="main-container">
+			<section class="task">
+        <div class="task__bar">
+          <div class="task__card" id="task"></div>
+        </div>
+        <div class="task__control">
+          <button onclick="start()">Start</button> 
+          <p> 
+              <div id="timer"></div> 
+          </p>
+        </div>
+      </section>
+      <section class="top_bar">
+        <div class="sphere"><img class="sphere_1 sphere__image" id="sphere_1" src='images/back2.jpg'/></div>
+        <div class="sphere"><img class="sphere_2 sphere__image" id="sphere_2" src='images/back2.jpg'/></div>
+        <div class="sphere"><img class="sphere_3 sphere__image" id="sphere_3" src='images/back2.jpg'/></div>
+      </section>
+      <section class="skill_bar">
+        <div class="skill"><img class="q_skill skill__image" src='images/quas.jpg'/></div>
+        <div class="skill"><img class="q_skill skill__image" src='images/wex.jpg'/></div>
+        <div class="skill"><img class="q_skill skill__image" src='images/exort.jpg'/></div>
+        <div class="skill"><img class="d_skill skill__image" id="d" src='images/back.jpg'/></div>
+        <div class="skill"><img class="f_skill skill__image" id="f" src='images/back.jpg'/></div>
+        <div class="skill"><img class="r skill__image" skill src='images/invoke.jpg'/></div>
+      </section>
+		</div>
+		<div class="right-container">Right Container</div>
+	</div>
+</body>
+<script src="src/script.js"></script>
+</html>
