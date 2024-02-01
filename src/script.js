@@ -46,7 +46,18 @@ document.addEventListener('keydown', function(e){
 		invoke();
 	}
 	else if (e.code === 'Space') {
-		startGame();
+		if(!canPlay) {
+			startGame();
+		}
+		else {
+			stopTimer();
+		taskImage.style.display = "none";
+		document.getElementById("timer").innerText = "";
+		taskElement.textContent = "";
+		btnStart.disabled = false;
+		canPlay = false;
+		}
+		
 	}
 });
 
@@ -125,10 +136,13 @@ function nextCard() {
 
 function startGame() {
 	startTimer();
+	taskImage.style.display = "initial";
+	document.getElementById("timer").innerText = "";
 	previousId = setRandomValues(-1);
 	countCards = 0;
 	btnStart.disabled = true; 
 	canPlay = true;
+
 }
 
 //*************
@@ -138,13 +152,16 @@ let totaltime = 0;
 
 const startTimer = () => {  
    // Создаем интервал, который будет считать нам время
-   intervalVariable = setInterval(updateTime, 10);  
+  intervalVariable = setInterval(updateTime, 100); 
+  
+	timeleft = 0;  
+	totaltime = 0;   
 }  
 
  const resetTimer = () => {  
    // Останавливаем таймер
    stopTimer();
-   timeleft = -10;
+   timeleft = 0;
    
    // Обновляем значение в ui
    updateTime();  
@@ -153,18 +170,20 @@ const startTimer = () => {
 const stopTimer = () => {
    // Производим очистку интервала
    clearInterval(intervalVariable);  
+	 intervalVariable = undefined;
 } 
 
-async function updateTime() {
+function updateTime() {
   // Шаг 10 миллисекунд
-  timeleft = timeleft + 10;  
+  timeleft = timeleft + 100;  
   let milli = timeleft % 1000;  
-
 	if (Math.floor(timeleft / 1000) > 100 || countCards >= 10) {
 		stopTimer();
 		taskImage.style.display = "none";
-		console.log("end "+ countCards);
-		document.getElementById("timer").innerText = `${Math.floor(timeleft / 1000)}.${Math.floor(milli / 10)} sec`;
+		document.getElementById("timer").innerText = `${Math.floor(timeleft / 1000)}.${Math.floor(milli / 100)} sec`;
+		taskElement.textContent = "";
+		btnStart.disabled = false;
+		canPlay = false;
 	}
 }  
 
